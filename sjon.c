@@ -19,11 +19,25 @@ int main()
 
 	psurface = SDL_GetWindowSurface(pwin);
 
-	SDL_FillRect(
-			psurface,
-			nullptr,
-			SDL_MapRGB(psurface->format, 0, 0, 0));
-	
+	SDL_Rect pixel;
+	pixel.x = 0;
+	pixel.y = 0;
+	pixel.w = 1;
+	pixel.h = 1;
+	for(int x=0; x < width; x++)
+	{
+		pixel.x = x;
+		for(int y=0; y < height; y++)
+		{
+			pixel.y = y;
+			SDL_FillRect(
+				psurface,
+				&pixel,
+				SDL_MapRGB(psurface->format, 255, 0, 0));
+				
+		}
+	}
+
 	SDL_UpdateWindowSurface(pwin);
 
 	bool running = 1;
